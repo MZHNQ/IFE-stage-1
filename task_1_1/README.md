@@ -22,5 +22,5 @@ DEMO：[http://yanisj.github.io/ife-missions/task-1-1/index.html](http://yanisj.
 - 将图片和说明文字改为 `<figure>` 这一套格式。
 
 ####参考
-- [任务一学习笔记（一）](https://github.com/brilliantyy/Baidu_IFE/blob/master/task_one/%E4%BB%BB%E5%8A%A1%E4%B8%80%EF%BC%9A_%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89.md)；
+- [任务一学习笔记（一）](https://github.com/brilliantyy/Baidu_IFE/blob/master/task_one/%E4%BB%BB%E5%8A%A1%E4%B8%80%EF%BC%9A_%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89.md)
 - [任务二学习笔记（二）](https://github.com/brilliantyy/Baidu_IFE/blob/master/task_one/%E4%BB%BB%E5%8A%A1%E4%B8%80%EF%BC%9A%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89.md)
