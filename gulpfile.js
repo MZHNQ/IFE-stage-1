@@ -47,6 +47,13 @@ gulp.task('js', ['clean'], function () {
 });
 
 
+gulp.task('images', ['clean'], function () {
+  return gulp.src(paths.images)
+    .pipe(cache(imagemin({optimizationLevel: 5})))
+    .pipe(gulp.dest(dst_dir));
+});
+
+
 
 gulp.task('lint', function () {
   return gulp.src(paths.js)
@@ -54,14 +61,7 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('default'));
 });
 
-
-gulp.task('images', ['clean'], function () {
-  return gulp.src(paths.images)
-    .pipe(cache(imagemin({optimizationLevel: 5})))
-    .pipe(gulp.dest(dst_dir));
-});
-
-gulp.task('browser-sync', function () {
+gulp.task('watch', function () {
   browserSync.init({
     server: {
       baseDir: "./"
