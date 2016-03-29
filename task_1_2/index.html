@@ -11,14 +11,16 @@
 
 
   <!-- Header Begin -->
-  <header>
+  <header class="header">
     <h1>网 class="content-box"站一级标题</h1>
-    <ul>
-        <li><a href="#">导航链接一</a></li>
-        <li><a href="#">导航链接二</a></li>
-        <li><a href="#">导航链接三</a></li>
-        <li><a class="disable" href="#">导航链接四</a></li>
-    </ul>
+    <nav>
+      <ul>
+          <li><a href="#">导航链接一</a></li>
+          <li><a href="#">导航链接二</a></li>
+          <li><a href="#">导航链接三</a></li>
+          <li><a class="disable" href="#">导航链接四</a></li>
+      </ul>
+    </nav>
   </header>
   <!-- Header End -->
 
@@ -29,12 +31,12 @@
 
     <!-- Article 1 -->
     <article class="content-box">
-      <h2>文章一级标题</h2>
-      <h3>文章二级标题</h3>
-      <div class="article-detail">
+      <header class="content-title">
+        <h2>文章一级标题</h2>
+        <h3>文章二级标题</h3>
         <em>文章作者</em>
         <em>文章发表时间</em>
-      </div>
+      </header>
   
       <p>
         这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,换行了
@@ -55,12 +57,12 @@
 
     <!-- Article 2 -->
     <article class="content-box">
-      <h2>另一片文章一级标题</h2>
-      <h3>文章二级标题</h3>
-      <div class="article-detail">
+      <header class="content-title">
+        <h2>另一片文章一级标题</h2>
+        <h3>文章二级标题</h3>
         <em>文章作者</em>
         <em>文章发表时间</em>
-      </div>
+      </header>
       
       <p>
         这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,这是一个很长很长的段落,换行了
@@ -80,56 +82,54 @@
     </article>
 
     <!-- Image Container -->
-    <div class="content-box">
-      <h2>图片</h2>
-      <ul class="img-list">
-
-        <li>
-          <div class="img-box">
-            <p>好看的图片</p>
-            <img class="small-img" src="img/yanis.png">
-          </div>          
-        </li>
-        
-        <li>
-          <div class="img-box">
-            <p>好看的图片</p>
-            <img class="small-img" src="img/yanis.png">
-          </div>  
-        </li>
-        
-        <li>
-          <div class="img-box">
-            <p>好看的图片</p>
-            <img class="small-img" src="img/yanis.png">
-          </div>  
-        </li>
-        
-        <li>
-          <div class="img-box">
-            <p>好看的图片</p>
-            <img class="small-img" src="img/yanis.png">
-          </div>  
-        </li>
-        
-        <li>
-          <div class="img-box">
-            <p>好看的图片</p>
-            <img class="small-img" src="img/yanis.png">
-          </div>  
-        </li>  
+    <section class="content-box">
+      <header class="content-title">
+        <h2>图片</h2>
+      </header>
+        <ul class="img-list">
+            
+          <li>
+            <figure class="img-box">
+              <figcaption>好看的图片</figcaption>
+              <img class="small-img" src="img/yanis.png">
+            </figure>
+          </li>
+          <li>
+            <figure class="img-box">
+              <figcaption>好看的图片</figcaption>
+              <img class="small-img" src="img/yanis.png">
+            </figure>
+          </li>
+          <li>
+            <figure class="img-box">
+              <figcaption>好看的图片</figcaption>
+              <img class="small-img" src="img/yanis.png">
+            </figure>
+          </li>
+          <li>
+            <figure class="img-box">
+              <figcaption>好看的图片</figcaption>
+              <img class="small-img" src="img/yanis.png">
+            </figure>
+          </li>
+          <li>
+            <figure class="img-box">
+              <figcaption>好看的图片</figcaption>
+              <img class="small-img" src="img/yanis.png">
+            </figure>
+          </li>
               
       </ul>
-    </div>
+    </section>
 
     <!-- Aticle 3 -->
     <article class="content-box">
-      <h2>最后一篇文章一级标题</h2>
-      <h3>文章二级标题</h3>
-      <div class="article-detail">
+      <header class="content-title">
+        <h2>最后一篇文章一级标题</h2>
+        <h3>文章二级标题</h3>
         <em>文章作者</em>
         <em>文章发表时间</em>
-      </div>
+      </header>
       
       <ol>
         <li>排名1</li>

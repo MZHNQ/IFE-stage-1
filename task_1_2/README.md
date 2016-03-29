@@ -19,6 +19,11 @@ DEMO：[http://yanisj.github.io/ife-missions/task-1-2/index.html](http://yanisj.
 
 CSS 代码还有优化的空间。
 
+### `v0.2.0`
+
+- HTML 结构按任务一 `v0.2.0` 调整
+- CSS 作相应的调整，保证页面正常显示
+
 
 ## 写作中的记录
 ### `margin-bottom`

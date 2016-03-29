@@ -32,7 +32,7 @@ h3 {
 
 /* =========================== */
 
-header {
+.header {
   height: 60px;
   padding: 0 20px;
 
@@ -41,7 +41,7 @@ header {
   background-color: #333;
 }
 
-header h1 {
+.header h1 {
   width: 120px;
   height: 100%;
 
@@ -52,13 +52,13 @@ header h1 {
   background-size: 120px;
 }
 
-header ul {
+.header ul {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-header li {
+.header li {
   width: 80px;
 
   display: inline-block;
@@ -66,13 +66,13 @@ header li {
   line-height: 60px;
 }
 
-header a {
+.header a {
   font-size: 11px;
   color: white;
   text-decoration: none;
 }
 
-header a.disable {
+.header a.disable {
   color: #ccc;
 }
 
@@ -96,17 +96,22 @@ header a.disable {
   background-color: #ffffff;
 }
 
+.content-title {
+  margin-bottom: 15px;
+}
+
 
 /* Article */
+
+
+.article-detail {
+  margin-bottom: 15px;
+}
 
 article em {
   font-size: 11px;
   color: #727c57;
   font-style: normal; 
-}
-
-.article-detail {
-  margin-bottom: 15px;
 }
 
 article p {
