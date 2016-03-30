@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1-4</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- highlight.js 相关的样式和 JavaScript 代码 -->
+  <link rel="stylesheet" href="./github.css">
+  <script src="./highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</head>
+<body>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- NAVIGATE -->
+    <!-- 顶部切换居中方式的按钮 -->
+    <nav>
+      <button class="active">know the size</button>
+      <button>don't know the size</button>
+      <button>use flex</button>
+    </nav>
+
+    <!-- 居中元素 -->
+    <div class="center know-size"></div>
+
+  </div>
+
+  <!-- ASIDE -->
+  <!-- 右侧的代码注释 -->
+  <aside>
+    <div id="css">
+
+      <pre id="size"><code>
+        .know-size {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+
+          margin-left: -200px;
+          margin-top: -100px;
+        }
+      </code></pre>
+
+      <pre id="without-size"><code>
+        .dont-know-size {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+
+          transform: translate(-50%, -50%);
+        }
+      </code></pre>
+
+      <pre id="flex"><code>
+        .flex-parent {
+          display: flex;
+        }
+
+        .with-flex {
+          margin: auto;
+          position: relative;
+        }
+      </code></pre>
+    </div>
+  </aside>
+  <script src="./control.js"></script>
+</body>
+</html>
