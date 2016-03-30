@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_22</title>
+	<style>
+	div { display: flex; width: 40%; height: 60%; margin: auto; border: 1px solid #000; background-color: #fff; }
+	#root { width: 1000px; height: 400px; }
+	#ctrl { width: 1000px; border: none; justify-content: center; }
+	button { width: 100px; background-color: #fff; }
+	select { width: 100px; }
+	</style>
+</head>
+<body>
+	<div id="root">
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<div id="ctrl">
+		<button id="prev">前序</button>
+		<button id="in">中序</button>
+		<button id="post">后序</button>
+		<select name="time" id="time">
+			<option value="200">快</option>
+			<option value="400">中</option>
+			<option value="600">慢</option>
+		</select>
+	</div>
+	<script>
+	(function(){
+		var tree = new Tree(document.querySelector("#root"));
+		// this.timer = {};
+		function Tree(node) {
+			var _this = this;
+			this.stack = [];
+			this.node = node;
+			this.reset = function(node){
+				node.style.backgroundColor = "#fff";
+				if(node.children[0]){
+					this.reset(node.children[0]);
+				}
+				if(node.children[1]){
+					this.reset(node.children[1]);
+				}
+			}
+			this.prevOrder = function(node){
+				this.stack.push(node);
+				if(node.children[0]){
+					this.prevOrder(node.children[0]);
+				}
+				if(node.children[1]){
+					this.prevOrder(node.children[1]);
+				}
+			}
+			this.inOrder = function(node){
+				if(node.children[0]){
+					this.inOrder(node.children[0]);
+				}
+				this.stack.push(node);
+				if(node.children[1]){
+					this.inOrder(node.children[1]);
+				}
+			}
+			this.postOrder = function(node){
+				if(node.children[0]){
+					this.postOrder(node.children[0]);
+				}
+				if(node.children[1]){
+					this.postOrder(node.children[1]);
+				}
+				this.stack.push(node);
+			}
+			this.animation = function(time){
+				this.reset(this.node);
+				clearInterval(this.timer);
+				var i = 0;
+				_this.timer = setInterval(function(){
+					if(i === _this.stack.length){
+						clearInterval(_this.timer);
+						_this.stack[i-1].style.backgroundColor = "#fff";
+						_this.stack = [];
+						return;
+					}
+					if(i>0) _this.stack[i-1].style.backgroundColor = "#fff";
+					_this.stack[i].style.backgroundColor = "#00f";
+					i++;
+				},time)
+			}
+		}
+		document.getElementById('prev').onclick = function(){
+			this.stack = [];
+			tree.prevOrder(tree.node);
+			tree.animation(document.getElementById("time").value);
+		}
+		document.getElementById('in').onclick = function(){
+			this.stack = [];
+			tree.inOrder(tree.node);
+			tree.animation(document.getElementById("time").value);
+		}
+		document.getElementById('post').onclick = function(){
+			this.stack = [];
+			tree.postOrder(tree.node);
+			tree.animation(document.getElementById("time").value);
+		}
+	})()
+	
+	</script>
+</body>
+</html>
