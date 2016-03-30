@@ -1,0 +1,162 @@
+/* ======================= */
+
+/* CLEARFIX */
+
+/* ======================= */
+
+.clearfix {
+    clear: both;
+}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+    zoom: 1;
+}
+
+
+
+/* ======================= */
+
+/* GLOBAL */
+
+/* ======================= */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+
+html {
+  padding: 20px;
+
+  background-color: #fff;
+
+  position: relative;
+}
+
+body {
+  background-color: #eee;
+
+  font-family: "Microsoft YaHei";
+  font-size: 12px;
+}
+
+
+h1 {
+  font-size: 15px;
+}
+
+h2 {
+  font-size: 14px;
+}
+
+.border {
+  border: 1px solid #999;
+  padding: 20px;
+}
+/* ======================= */
+
+/* TEAM */
+
+/* ======================= */
+
+.team {
+  
+  background-color: #fff;
+
+  overflow: hidden;
+}
+
+.team a {
+
+  color: #000;
+  text-decoration: none;
+}
+
+.team .logo {
+  margin-right: 20px;
+  float: left;
+}
+
+.team img {
+  width: 80px;
+}
+
+
+
+/* ======================= */
+
+/* DISCRIPTION */
+
+/* ======================= */
+
+.discription {
+  background-color: #fff;
+
+  line-height: 1.7;
+}
+
+.discription p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  text-indent: 2em;
+}
+
+
+
+/* ======================= */
+
+/* MEMBER */
+
+/* ======================= */
+
+.member {
+  background-color: #fff;
+}
+
+.member img {
+  width: 80px;
+  height: 80px;
+}
+
+
+
+/* ======================= */
+
+/* 双飞翼布局解决方案 */
+
+/* ======================= */
+
+.left {
+  width: 160px;
+  float: left;
+
+  margin-left: -100%;
+}
+
+.center {
+  float: left;
+
+  width: 100%;
+}
+
+.center-warp {
+  margin-left: 222px;
+  margin-right: 142px;
+}
+
+.right {
+  width: 80px;
+  float: left;
+  
+  margin-left: -122px;
+}
