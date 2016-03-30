@@ -21,3 +21,7 @@ DEMO：[http://yanisj.github.io/ife-missions/task-1-4/index.html](http://yanisj.
 可能会存在一些浏览器兼容上的问题，有待调整。
 
 ## 版本调整记录
+### v0.2.0
+- `header` 标签改为 `nav`
+- 使用 :after :before 两个伪元素，来实现角落上的黄色块
+- 调整 highlight.js 需要用到的文件的路径
