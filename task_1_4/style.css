@@ -26,7 +26,7 @@ body {
   position: relative;
 }
 
-header {
+nav {
   position: absolute;
 
   top: 5%;
@@ -37,7 +37,7 @@ header {
   text-align: center;
 }
 
-header button {
+nav button {
   background-color: #ccc;
   color: #000;
 
@@ -51,7 +51,7 @@ header button {
   cursor: pointer;
 }
 
-header button.active {
+nav button.active {
   background-color: #000;
   color: #ccc;
 
@@ -115,6 +115,28 @@ aside {
   overflow: hidden;
 }
 
+.center:after, .center:before {
+  width: 100px;
+  height: 100px;
+  content: "";
+
+  background-color: #fc0;
+
+  border-radius: 50px;
+
+  position: absolute;
+}
+
+.center:before {
+  top: -50px;
+  left: -50px;
+}
+
+.center:after {
+  right: -50px;
+  bottom: -50px;
+}
+
 .know-size {
   position: absolute;
   top: 50%;
@@ -141,23 +163,3 @@ aside {
   position: relative;
 }
 
-.left-conner, .right-conner {
-  width: 100px;
-  height: 100px;
-
-  background-color: #fc0;
-
-  border-radius: 50px;
-
-  position: absolute;
-}
-
-.left-conner {
-  top: -50px;
-  left: -50px;
-}
-
-.right-conner {
-  right: -50px;
-  bottom: -50px;
-}
