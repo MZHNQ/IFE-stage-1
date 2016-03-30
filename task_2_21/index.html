@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_21</title>
+	<style>
+	.resault span,.tag-resault span { height: 30px; padding: 10px; background-color: #3af; display: inline-block; margin: 10px; color: #fff; line-height: 30px; }
+	.tag-resault { margin: 50px; height: 50px; }
+	#submit { background-color: #fff; border: 1px solid #ccc; border-radius: 2px; outline: none; }
+	#input-error { font: 12px "微软雅黑";  }
+	</style>
+</head>
+<body>
+	<div class="tag-ctrl">
+		<span>Tag:</span>
+		<input type="text" id="tag-input">
+	</div>
+	<div class="tag-resault"></div>
+	<div id="ctrl">
+		<textarea type="text" id="input" placeholder="请输入兴趣爱好,可以输入多个内容，以空格分隔" cols="30" rows="10"></textarea><br>
+		<button id="submit">确认兴趣爱好</button>
+		<span id="input-error" style="visibility: hidden;">请输入兴趣爱好,可以输入多个内容，以空格分隔</span>
+	</div>
+	<div class="resault"></div>
+	<script>
+	(function(){
+		//验证输入
+		function validate(input,error){
+			var reg = new RegExp("^[0-9a-zA-Z\\s\\u4E00-\\u9FFF]+$","g");
+			if(!reg.test(input)){
+				if(error)error.style.visibility = "visible";
+				return false;
+			}
+			if(error)error.style.visibility = "hidden";
+			return true;
+		}
+		//去重
+		function unique(sub,sup){
+			for (var i = 0; i < sup.length; i++) {
+				if(sub === sup[i].innerHTML) return false;
+			}
+			return true;
+		}
+		//创建元素
+		function create(value,sup){
+			var reg = new RegExp("\\s+");
+			var arr = value.split(reg);
+			var fragment = document.createDocumentFragment();;
+			arr.forEach(function(data){
+				if(!unique(data,sup.childNodes)) return;
+				var elem = document.createElement("span");
+				elem.innerHTML = data;
+				elem.className = "item";
+				sup.appendChild(elem);
+			})
+			return fragment;
+		}
+		document.getElementById("submit").onclick = function(){
+			var resault = document.querySelector(".resault");
+			//验证输入
+			if(!validate(document.getElementById('input').value,document.getElementById("input-error"))) return;
+			//插入对象
+			// resault.appendChild(create(document.getElementById('input').value));
+			create(document.getElementById('input').value.trim(),resault);
+			document.getElementById('input').value = "";
+			//判断个数并操作
+			while(resault.childNodes.length > 10){
+				resault.removeChild(resault.childNodes[0]);
+			}
+		}
+		document.getElementById("tag-input").onkeydown = function(e){
+			if(e.keyCode === 32 || e.keyCode === 188 || e.keyCode === 13){
+				e.preventDefault();
+				var tagResault = document.querySelector(".tag-resault");
+				if(!validate(document.getElementById('tag-input').value,null)) return;
+				create(document.getElementById('tag-input').value.trim(),tagResault);
+				document.getElementById('tag-input').value = "";
+				while(tagResault.childNodes.length > 10){
+					tagResault.removeChild(tagResault.childNodes[0]);
+				}
+			}
+		}
+		document.onmouseover = function(e){
+			if(e.target.className === "item"){
+				e.target.style.backgroundColor = "#f00";
+				var txt = e.target.innerHTML;
+				e.target.innerHTML = "删除" + e.target.innerHTML;
+				e.target.onmouseout = function(){
+					e.target.style.backgroundColor = "#3af";
+					e.target.innerHTML = txt;
+				}
+			}
+		}
+		document.onclick = function(e){
+			if(e.target.className === "item"){
+				e.target.parentNode.removeChild(e.target)
+			}
+		}
+		// document.onclick = function(e){
+		// 	var resault = document.querySelector(".resault");
+		// 	if(e.target.id === "left-out"){
+		// 		if(resault.innerHTML === ""){
+		// 			alert("容器已为空");
+		// 			return;
+		// 		}
+		// 		var elem = resault.childNodes[0]
+		// 		resault.removeChild(elem);
+		// 		alert(elem.innerHTML);
+		// 	}
+		// 	if(e.target.id === "right-out"){
+		// 		if(resault.innerHTML === ""){
+		// 			alert("容器已为空");
+		// 			return;
+		// 		}
+		// 		var elem = resault.childNodes[resault.childNodes.length-1]
+		// 		resault.removeChild(elem);
+		// 		alert(elem.innerHTML);
+		// 	}
+		// 	if (e.target.className === "item") {
+		// 		resault.removeChild(e.target)
+		// 	}
+		// 	if (e.target.id === "search-btn") {
+		// 		var txt = document.getElementById("search-text").value;
+
+		// 		console.log(txt);
+		// 		// Array.forEach.call(resault.childNodes,function(data){
+		// 		// 	console.log(1)
+		// 		// 	data.style.backgroundColor = "#f00";
+		// 		// 	if (data.value.indexof(txt) !== 0){
+		// 		// 		data.style.backgroundColor = "#00f"
+		// 		// 	}
+		// 		// })
+		// 		for (var i = 0; i < resault.childNodes.length; i++) {
+		// 			resault.childNodes[i].style.backgroundColor = "#f00";
+		// 			if (resault.childNodes[i].innerHTML.indexOf(txt) !== -1){
+		// 				resault.childNodes[i].style.backgroundColor = "#00f"
+		// 			}
+		// 		}
+
+		// 	}
+		// 	//验证输入
+		// 	if(e.target.tagName === "BUTTON"){
+		// 		if(!validate(document.getElementById('input').value)){
+		// 			document.getElementById("input-error").style.visibility = "visible";
+		// 			return;
+		// 		}
+		// 		document.getElementById("input-error").style.visibility = "hidden";
+		// 	}
+		// 	if(e.target.id === "left-in"){
+		// 		resault.insertBefore(create(document.getElementById('input').value),resault.firstChild);
+
+		// 	}
+		// 	if(e.target.id === "right-in"){
+		// 		resault.appendChild(create(document.getElementById('input').value));
+		// 	}
+		// }
+	})()
+	</script>
+</body>
+</html>
