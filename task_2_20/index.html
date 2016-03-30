@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_20</title>
+	<style>
+	.resault span { height: 30px; padding: 10px; background-color: #f00; display: inline-block; margin: 10px; color: #fff; line-height: 30px; }
+	</style>
+</head>
+<body>
+	<div id="ctrl">
+		<textarea type="text" id="input" placeholder="请输入汉字、字母或数字,可以输入多个内容，以空格分隔" cols="30" rows="10"></textarea>
+		<button id="left-in">左侧入</button>
+		<button id="right-in">右侧入</button>
+		<button id="left-out">左侧出</button>
+		<button id="right-out">右侧出</button>
+		<span id="input-error" style="visibility: hidden;">请输入汉字、字母或数字</span><br>
+		<input type="text" id="search-text"><button id="search-btn">search</button>
+	</div>
+	<div class="resault"></div>
+	<script>
+	(function(){
+		//验证输入是否为数字
+		function validate(input){
+			var reg = new RegExp("^[0-9a-zA-Z\\s\\u4E00-\\u9FFF]+$","g");
+			return reg.test(input);
+		}
+		//创建元素
+		function create(value){
+			var reg = new RegExp("\\s+");
+			var arr = value.split(reg);
+			var fragment = document.createDocumentFragment();;
+			arr.forEach(function(data){
+				var elem = document.createElement("span");
+				elem.innerHTML = data;
+				elem.className = "item";
+				fragment.appendChild(elem)
+			})
+			return fragment;
+		}
+		document.onclick = function(e){
+			var resault = document.querySelector(".resault");
+			if(e.target.id === "left-out"){
+				if(resault.innerHTML === ""){
+					alert("容器已为空");
+					return;
+				}
+				var elem = resault.childNodes[0]
+				resault.removeChild(elem);
+				alert(elem.innerHTML);
+			}
+			if(e.target.id === "right-out"){
+				if(resault.innerHTML === ""){
+					alert("容器已为空");
+					return;
+				}
+				var elem = resault.childNodes[resault.childNodes.length-1]
+				resault.removeChild(elem);
+				alert(elem.innerHTML);
+			}
+			if (e.target.className === "item") {
+				resault.removeChild(e.target)
+			}
+			if (e.target.id === "search-btn") {
+				var txt = document.getElementById("search-text").value;
+
+				console.log(txt);
+				// Array.forEach.call(resault.childNodes,function(data){
+				// 	console.log(1)
+				// 	data.style.backgroundColor = "#f00";
+				// 	if (data.value.indexof(txt) !== 0){
+				// 		data.style.backgroundColor = "#00f"
+				// 	}
+				// })
+				for (var i = 0; i < resault.childNodes.length; i++) {
+					resault.childNodes[i].style.backgroundColor = "#f00";
+					if (resault.childNodes[i].innerHTML.indexOf(txt) !== -1){
+						resault.childNodes[i].style.backgroundColor = "#00f"
+					}
+				}
+
+			}
+			//验证输入
+			if(e.target.tagName === "BUTTON"){
+				if(!validate(document.getElementById('input').value)){
+					document.getElementById("input-error").style.visibility = "visible";
+					return;
+				}
+				document.getElementById("input-error").style.visibility = "hidden";
+			}
+			if(e.target.id === "left-in"){
+				resault.insertBefore(create(document.getElementById('input').value),resault.firstChild);
+
+			}
+			if(e.target.id === "right-in"){
+				resault.appendChild(create(document.getElementById('input').value));
+			}
+		}
+	})()
+	</script>
+</body>
+</html>
