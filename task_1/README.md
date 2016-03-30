@@ -1,6 +1,6 @@
 # 任务一：零基础 HTML 编码
 任务链接：[任务一：零基础 HTML 编码](http://ife.baidu.com/task/detail?taskId=1)
-DEMO：[http://yanisj.github.io/ife-missions/task-1-1/index.html](http://yanisj.github.io/ife-missions/task-1-1/index.html)
+DEMO：[http://mzhnq.github.io/tasks/task-1-1](http://mzhnq.github.io/tasks/task-1-1)
 
 ## 基本介绍
 

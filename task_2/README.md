@@ -1,6 +1,6 @@
 #任务二：零基础 HTML 及 CSS 编码（一）
 任务链接：[零基础 HTML 及 CSS 编码（二）](http://ife.baidu.com/task/detail?taskId=2)
-DEMO：[http://yanisj.github.io/ife-missions/task-1-2/index.html](http://yanisj.github.io/ife-missions/task-1-2/index.html)
+DEMO：[http://mzhnq.github.io/tasks/task-1-2](http://mzhnq.github.io/tasks/task-1-2)
 
 ## 版本调整记录
 ### 第一版
