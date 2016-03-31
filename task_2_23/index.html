@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>task_2_23</title>
+	<title>task_2_24</title>
 	<style>
 	div { display: flex; padding: 10px; border: 1px solid #000; background-color: #fff; margin: 10px }
 	#ctrl { width: 1000px; border: none; justify-content: center; }
@@ -107,12 +107,13 @@
 						clearInterval(_this.timer);
 						_this.stack[i-1].style.backgroundColor = "#fff";
 						_this.stack = [];
-						if(!_this.have){alert("没有找到")}
+						if(flag){if(!_this.have){alert("没有找到")}}
 						_this.have = false;
 						return;
 					}
 					if(i>0) _this.stack[i-1].style.backgroundColor = _this.uniqueColor;
 					_this.stack[i].style.backgroundColor = "#00f";
+					_this.uniqueColor = "#fff";
 					if(flag){
 						if(document.getElementById("search-text").value === _this.stack[i].childNodes[0].wholeText.trim()){
 							_this.stack[i].style.backgroundColor = "#f00";
