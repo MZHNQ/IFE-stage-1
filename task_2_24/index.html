@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_24</title>
+	<style>
+	div { display: flex; padding: 10px; border: 1px solid #000; background-color: #fff; margin: 10px; flex-wrap: wrap; }
+	#ctrl { width: 1200px; border: none; justify-content: center; }
+	button { width: 100px; background-color: #fff; }
+	select { width: 100px; }
+	/*.item { background-color: red; }*/
+	</style>
+</head>
+<body>
+	<div id="root">root
+		<div class="item">pink
+			<div  class="item">apple
+				<div  class="item">bababa</div>
+				<div  class="item">dog</div>
+			</div>
+			<div  class="item">fat
+				<div  class="item">solid</div>
+				<div  class="item">sala</div>
+				<div  class="item">fake</div>
+				<div  class="item">red</div>
+			</div>
+		</div>
+		<div  class="item">blood
+			<div  class="item">you
+				<div  class="item">wind</div>
+				<div  class="item">logic</div>
+				<div  class="item">mouse</div>
+			</div>
+			<div  class="item">link
+				<div  class="item">proud</div>
+				<div  class="item">quit</div>
+			</div>
+			<div  class="item">low
+				<div  class="item">no</div>
+				<div  class="item">gap</div>
+				<div  class="item">decoration</div>
+				<div  class="item">new</div>
+			</div>
+		</div>
+		<div  class="item">rap
+			<div  class="item">aaa</div>
+		</div>
+	</div>
+	<div id="ctrl">
+		<input type="text" id="add-text" placeholder="请输入添加节点的文本">
+		<button id="add">添加节点</button>
+		<button id="delete">删除选中节点</button>
+		<button id="depth">深度优先遍历</button>
+		<button id="level">广度优先遍历</button>
+		<select name="time" id="time">
+			<option value="200">快</option>
+			<option value="400">中</option>
+			<option value="600">慢</option>
+		</select>
+		<input type="text" id="search-text" placeholder="请输入搜索文本">
+		<button id="depth-search">深度优先搜索</button>
+		<button id="level-search">广度优先搜索</button>
+	</div>
+	<script>
+	(function(){
+		var tree = new Tree(document.querySelector("#root"));
+		function Tree(node) {
+			var _this = this;
+			this.stack = [];
+			this.node = node;
+			this.have = false;
+			this.active = null;
+			this.reset = function(node,attr){
+				if(attr === "backgroundColor") node.style.backgroundColor = "#fff";
+				if(attr === "border") {
+					node.style.border = "1px solid #000";
+					node.style.boxShadow = "";
+				}
+				if(node.children.length > 0){
+					for (var i = 0; i < node.children.length; i++) {
+						this.reset(node.children[i],attr);
+					}
+				}
+			}
+			this.depth = function(node){
+				this.stack.push(node);
+				if(node.children.length > 0){
+					for (var i = 0; i < node.children.length; i++) {
+						this.depth(node.children[i]);
+					}
+				}
+			}
+			this.level = function(node){
+				var temp = [];
+				if(this.stack.length === 0){
+					this.stack.push(node)
+					this.arr = [];
+					this.arr.push(node);
+				}
+				this.arr.forEach(function(data){
+					Array.prototype.forEach.call(data.children,function(data){
+						temp = temp.concat(data);
+					})
+				})
+				if(temp.length === 0) return;
+				this.stack = this.stack.concat(temp);
+				this.arr = temp;
+				this.level(this.arr);
+			}
+			this.animation = function(time,flag){
+				this.reset(this.node,"backgroundColor");
+				clearInterval(this.timer);
+				var i = 0;
+				this.timer = setInterval(function(){
+					//动画效果完成
+					if(i === _this.stack.length){
+						clearInterval(_this.timer);
+						_this.stack[i-1].style.backgroundColor = "#fff";
+						_this.stack = [];
+						if(flag){if(!_this.have){alert("没有找到")}}
+						_this.have = false;
+						return;
+					}
+					if(i>0) _this.stack[i-1].style.backgroundColor = _this.uniqueColor;
+					_this.stack[i].style.backgroundColor = "#00f";
+					_this.uniqueColor = "#fff";
+					if(flag){
+						if(document.getElementById("search-text").value === _this.stack[i].childNodes[0].wholeText.trim()){
+							_this.stack[i].style.backgroundColor = "#f00";
+							_this.uniqueColor = "#f00";
+							_this.have = true;
+						}else _this.uniqueColor = "#fff";
+					}
+					i++;
+				},time)
+			}
+		}
+		document.getElementById('depth').onclick = function(){
+			tree.stack = [];
+			tree.depth(tree.node);
+			tree.animation(document.getElementById("time").value)
+		}
+		document.getElementById('level').onclick = function(){
+			tree.stack = [];
+			tree.level(tree.node);
+			tree.animation(document.getElementById("time").value)
+		}
+		document.getElementById('depth-search').onclick = function(){
+			if(document.getElementById("search-text").value.trim() === '') return;
+			tree.stack = [];
+			tree.depth(tree.node,true);
+			tree.animation(document.getElementById("time").value,true)
+		}
+		document.getElementById('level-search').onclick = function(){
+			if(document.getElementById("search-text").value.trim() === '') return;
+			tree.stack = [];
+			tree.level(tree.node,true);
+			tree.animation(document.getElementById("time").value,true)
+		}
+		document.onclick = function(e){
+			if(e.target.className === "item"){
+				e.stopPropagation();
+				tree.active = e.target;
+				tree.reset(tree.node,"border");
+				e.target.style.border = "1px solid #0f0";
+				e.target.style.boxShadow = "5px 5px"
+			}
+			if(e.target.id === "delete"){
+				if(tree.active === null) return;
+				tree.active.parentNode.removeChild(tree.active)
+			}
+			if(e.target.id === "add"){
+				if(tree.active === null || document.getElementById("add-text").value.trim() === "") return;
+				var node = document.createElement("div");
+				node.className = "item";
+				node.innerHTML = document.getElementById("add-text").value.trim();
+				tree.active.appendChild(node);
+			}
+		}
+
+	})()
+	
+	</script>
+</body>
+</html>
