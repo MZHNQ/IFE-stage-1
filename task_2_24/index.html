@@ -12,7 +12,7 @@
 	</style>
 </head>
 <body>
-	<div id="root">root
+	<div id="root" class="item">root
 		<div class="item">pink
 			<div  class="item">apple
 				<div  class="item">bababa</div>
@@ -167,6 +167,10 @@
 			}
 			if(e.target.id === "delete"){
 				if(tree.active === null) return;
+				if(tree.active.id === "root"){
+					alert("无法删除根节点");
+					return;
+				}
 				tree.active.parentNode.removeChild(tree.active)
 			}
 			if(e.target.id === "add"){
