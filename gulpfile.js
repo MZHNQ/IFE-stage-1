@@ -42,7 +42,7 @@ gulp.task('css', ['clean'], function () {
 gulp.task('js', ['clean'], function () {
   return gulp.src(paths.js)
     .pipe(uglyfly())
-    .pipe(rename({suffix: '.min'}))
+    // .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(dst_dir));
 });
 
