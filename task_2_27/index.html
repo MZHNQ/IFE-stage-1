@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_27</title>
+	<style>
+	body,div,input,h3,p { margin: 0; padding: 0; }
+	body { background-color: #000; }
+	#universe{ width: 800px; height: 800px; margin: 50px auto; }
+	.circle,#planet { position: absolute; border: 1px solid #fff; left: 50%; top: 50%; }
+	#circle1 { width: 300px; height: 300px; margin-left: -150px; margin-top: -150px; border-radius: 300px; }
+	#circle2 { width: 400px; height: 400px; margin-left: -200px; margin-top: -200px; border-radius: 400px; }
+	#circle3 { width: 500px; height: 500px; margin-left: -250px; margin-top: -250px; border-radius: 500px; }
+	#circle4 { width: 600px; height: 600px; margin-left: -300px; margin-top: -300px; border-radius: 600px; }
+	#planet { width: 200px; height: 200px; margin-left: -100px; margin-top: -100px; border-radius: 200px; border: none; background-color: #00f; }
+	.spaceship { width: 60px; height: 100%; position: absolute; left: 50%; margin-left: -30px; }
+	.spaceship div { position: relative; width: 60px; height: 20px; margin-top: -10px; background-color: #fff; border-radius: 10px; overflow: hidden; }
+	.spaceship .energy { position: absolute; top: 0; display: block; width: 100%; height: 100%; background-color: #00f; }
+	.spaceship .content { position: absolute; z-index: 10; display: block; width: 100%; height: 20px; font: bolder 12px "微软雅黑"; text-align: center; line-height: 20px; }
+	.ctrl { background-color: #fff; position: absolute; top: 0; margin: 5px; }
+	.ctrl div { margin: 5px; }
+	.ctrl h3 { text-align: center; padding: 5px; background-color: #00f; color: #fff; }
+	.destroy { display: none; }
+	.stop { display: none; }
+	.message { position: absolute; bottom: 0; width: 500px; height: 300px; background-color: #fff; overflow: auto; user-select:text; }
+	</style>
+</head>
+<body>
+	<div id="universe">
+		<div id="circle4" class="circle"></div>
+		<div id="circle3" class="circle"></div>
+		<div id="circle2" class="circle"></div>
+		<div id="circle1" class="circle"></div>
+		<div id="planet"></div>
+	</div>
+	<div class="ctrl">
+		<h3>操作台</h3>
+		<div class="ctrl1">
+			<span>一号轨道：</span>
+			<select name="expend" id="expend1" class="expend">
+				<option value="slow">前进号(速度3deg/s,能耗5%/s)</option>
+				<option value="nomal">奔腾号(速度5deg/s,能耗7%/s)</option>
+				<option value="fast">超越号(速度8deg/s,能耗9%/s)</option>
+			</select>
+			<select name="restore" id="restore1" class="restore">
+				<option value="2">劲量型(补充能源速度2%/s)</option>
+				<option value="3">光能型(补充能源速度3%/s)</option>
+				<option value="4">永久型(补充能源速度4%/s)</option>
+			</select>
+			<button class="create">创建飞船</button><button class="destroy">销毁飞船</button>
+			<button class="fly" disabled="true">飞行</button><button class="stop" disabled="true">停止</button>
+		</div>
+		<div class="ctrl2">
+			<span>二号轨道：</span>
+			<select name="expend" id="expend2" class="expend">
+				<option value="slow">前进号(速度3deg/s,能耗5%/s)</option>
+				<option value="nomal">奔腾号(速度5deg/s,能耗7%/s)</option>
+				<option value="fast">超越号(速度8deg/s,能耗9%/s)</option>
+			</select>
+			<select name="restore" id="restore2" class="restore">
+				<option value="2">劲量型(补充能源速度2%/s)</option>
+				<option value="3">光能型(补充能源速度3%/s)</option>
+				<option value="4">永久型(补充能源速度4%/s)</option>
+			</select>
+			<button class="create">创建飞船</button><button class="destroy">销毁飞船</button>
+			<button class="fly" disabled="true">飞行</button><button class="stop" disabled="true">停止</button>
+		</div>
+		<div class="ctrl3">
+			<span>三号轨道：</span>
+			<select name="expend" id="expend3" class="expend">
+				<option value="slow">前进号(速度3deg/s,能耗5%/s)</option>
+				<option value="nomal">奔腾号(速度5deg/s,能耗7%/s)</option>
+				<option value="fast">超越号(速度8deg/s,能耗9%/s)</option>
+			</select>
+			<select name="restore" id="restore3" class="restore">
+				<option value="2">劲量型(补充能源速度2%/s)</option>
+				<option value="3">光能型(补充能源速度3%/s)</option>
+				<option value="4">永久型(补充能源速度4%/s)</option>
+			</select>
+			<button class="create">创建飞船</button><button class="destroy">销毁飞船</button>
+			<button class="fly" disabled="true">飞行</button><button class="stop" disabled="true">停止</button>
+		</div>
+		<div class="ctrl4">
+			<span>四号轨道：</span>
+			<select name="expend" id="expend4" class="expend">
+				<option value="slow">前进号(速度3deg/s,能耗5%/s)</option>
+				<option value="nomal">奔腾号(速度5deg/s,能耗7%/s)</option>
+				<option value="fast">超越号(速度8deg/s,能耗9%/s)</option>
+			</select>
+			<select name="restore" id="restore4" class="restore">
+				<option value="2">劲量型(补充能源速度2%/s)</option>
+				<option value="3">光能型(补充能源速度3%/s)</option>
+				<option value="4">永久型(补充能源速度4%/s)</option>
+			</select>
+			<button class="create">创建飞船</button><button class="destroy">销毁飞船</button>
+			<button class="fly" disabled="true">飞行</button><button class="stop" disabled="true">停止</button>
+		</div>
+	</div>
+
+	<div class="message"></div>
+	<script src="js/Controller.js"></script>
+	<script src="js/Spaceship.js"></script>
+	<script src="js/Emitter.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
