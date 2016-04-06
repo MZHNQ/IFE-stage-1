@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_29</title>
+	<style>
+	body,input,button,form,label{ margin: 0; padding: 0; }
+	body { font-family: "微软雅黑"; }
+	form { margin: 100px; }
+	label { display: inline-block; }
+	input { height: 30px; width: 300px; font: 20px "微软雅黑"; outline: none; padding-left: 5px; font-size: 14px; border: 1px solid #000; }
+	button { height: 32px; width: 52px; border: 1px solid #00f; outline: none; background-color: #00f; color: #fff; }
+	p { font-size: 12px; padding-left: 2.3rem; color: #666; }
+	</style>
+</head>
+<body>
+	<form action="#">
+		<div>
+			<label for="name">名称</label>
+			<input type="text" id="name">
+			<button id="validate">验证</button>
+			<p>必填，长度为4~16个字符</p>
+		</div>
+	</form>
+	<script>
+		(function(){
+			function validate(str){
+				var str = str.trim();
+				var len = 0;
+				if(str.length === 0) setMessage("姓名不能为空","red");
+				var arr = str.split("");
+				// var oneReg = new RegExp("[0-9a-zA-Z]");
+				var twoReg = new RegExp("[^\\x00-\\xff]");
+				for (var i = 0; i < arr.length; i++) {
+					if(twoReg.test(arr[i])){
+						len += 2;
+					}else{
+						len ++;
+					}
+				}
+				// console.log(len)
+				if(len > 16 || len < 4){
+					setMessage("姓名长度为4-16个字符","red");
+					return;
+				}
+				setMessage("名称格式正确","green")
+			}
+			function setMessage(str,color){
+				document.querySelector("p").innerHTML = str;
+				document.querySelector("p").style.color = color;
+				document.querySelector("input").style.borderColor = color;
+			}
+			document.querySelector("button").onclick = function(){
+				validate(document.querySelector("input").value)
+			}
+		})()
+
+	</script>
+</body>
+</html>
