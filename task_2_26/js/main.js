@@ -21,7 +21,9 @@
 				e.target.style.display = "none";
 				e.target.parentNode.querySelector(".create").style.display = "inline";
 				e.target.parentNode.querySelector(".fly").disabled = true;
+				e.target.parentNode.querySelector(".fly").style.display = "inline";
 				e.target.parentNode.querySelector(".stop").disabled = true;
+				e.target.parentNode.querySelector(".stop").style.display = "none";
 				var mediator = new Mediator(Number(e.target.parentNode.className.charAt(4)),"destroy");
 				controller.publish(mediator);
 				break;
