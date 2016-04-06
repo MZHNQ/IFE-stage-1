@@ -18,7 +18,7 @@ function renderQueue () {
   var temp      = '';
   queueWrap.appendChild(queue);
   queue.innerHTML = queueData.map(function (el,index) {
-    return '<span>' + el + '</span>';
+    return '<span style="height:'+el*2+'px"><em>' + el + '</em></span>';
   }).join('');
 }
 
