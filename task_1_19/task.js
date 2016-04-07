@@ -63,7 +63,6 @@
     var queueWrap = $('#queue-wrap');
     queueWrap.innerHTML = '';
     var queue     = document.createElement('div');
-    var temp      = '';
     queueWrap.appendChild(queue);
     queue.innerHTML = queueData.map(function (el,index) {
       return '<span style="height:'+el*2+'px"><em>' + el + '</em></span>';
@@ -138,7 +137,6 @@
     $('#push').addEventListener('click', deal([].push, null, getInput));
     $('#shift').addEventListener('click', deal([].shift, window.alert));
     $('#pop').addEventListener('click', deal([].pop, window.alert));
-    // document.addEventListener('click', queueHandler);
     $('#queue-wrap').addEventListener('click', deal([].splice, window.alert, getIndex, 1));
     $('#sort').addEventListener('click', sortHandler);
     $('#generate').addEventListener('click', dataGenerator);
