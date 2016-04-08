@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task_2_33</title>
+	<style>
+	body,div,table,td,tr{ margin: 0;padding: 0; }
+	table { border: none; margin-bottom: 50px; }
+	.wrapper { position: relative; }
+	td { width: 48px; height: 48px; text-align: center; vertical-align: center; border: 1px solid #ccc; padding: 0; }
+	.sign { border: none; }
+	#canvas { position: absolute; width: 498px; height: 498px; border: 2px solid #000; top: 47px; left: 47px; background-color: rgba(200,200,200,.3); }
+	#cube { width: 48px; height: 48px; background-color: #00f; position: absolute; transition: all .5s; }
+	#head { height: 15px; background-color: #f00; }
+	img { width: 48px; height: 48px; }
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div id="canvas">
+			<div id="cube">
+				<img src="img/tiger.jpg">
+			</div>
+		</div>
+		<table border="1" cellspacing="0">
+			<tr>
+				<td class="sign"></td>
+				<td class="sign">1</td>
+				<td class="sign">2</td>
+				<td class="sign">3</td>
+				<td class="sign">4</td>
+				<td class="sign">5</td>
+				<td class="sign">6</td>
+				<td class="sign">7</td>
+				<td class="sign">8</td>
+				<td class="sign">9</td>
+				<td class="sign">10</td>
+			</tr>
+			<tr>
+				<td class="sign">1</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">2</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">3</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">5</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">6</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">7</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">8</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">9</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="sign">10</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<input type="text" id="commend">
+		<button id="do">执行</button>
+		<div>
+			<button id="go">GO</button>
+			<button id="tl">TUN LEF</button>
+			<button id="tb">TUN BAC</button>
+			<button id="tr">TUN RIG</button>
+		</div>
+	</div>
+	<script src="js/cube.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
