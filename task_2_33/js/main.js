@@ -7,5 +7,6 @@ document.onclick = function(e){
 		case "tl": cube.receive("tun lef"); break;
 		case "tr": cube.receive("tun rig"); break;
 		case "tb": cube.receive("tun bac"); break;
+		default: break;
 	}
 }
