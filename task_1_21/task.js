@@ -29,14 +29,6 @@ function limit ( arr, n ) {
   if (arr.length > n) return arr.slice(arr.length - n);
   return arr;
 }
-// 去除 HTML element 上的 class
-function clearClass ( HTMLel ) {
-  HTMLel.className = "";
-}
-// 添加 class
-function addClass ( HTMLel, className ) {
-  HTMLel.className = className;
-}
 // hover
 function hover ( element, fIn, fOut ) {
   element.addEventListener('mouseover', fIn);
@@ -108,7 +100,6 @@ Queue.prototype.initEvent = function () {
     this.btn.addEventListener('click', this.addHandler.bind(this));
   } else {
     this.input.addEventListener('keyup', function (e) {
-      console.log(e.which);
       if ( e.which === 32 || e.which === 13 || e.which === 186 ) {
         this.addHandler();
         e.target.value = '';
