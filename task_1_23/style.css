@@ -1,0 +1,28 @@
+.container {
+  width: 500px;
+  height: 100px;
+
+  position: relative;
+}
+
+.container div {
+  height: 60%;
+  padding: 8px;
+
+  background-color: #fff;
+  border: 1px solid #000;
+  
+  float: left;
+}
+
+.container .left {
+  left: 3%;
+}
+
+.container .right {
+  right: 3%;
+}
+
+.container .hi {
+  background-color: red;
+}
