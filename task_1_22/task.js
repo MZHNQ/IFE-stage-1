@@ -187,7 +187,6 @@ function render () {
     node.html = document.createElement('div');
     if (node.parent) {
       node.parent.html.appendChild(node.html);
-      node.html.classList.add(node.side);
     } else {
       node.html.classList.add('root');
     }
