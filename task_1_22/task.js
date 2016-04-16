@@ -4,6 +4,7 @@ function Node (data) {
   this.parent   = null;
   this.left     = null;
   this.right    = null;
+  this.side     = null;
 }
 
 /*===========
@@ -14,8 +15,11 @@ function Node (data) {
  *
  * Methods:
  *
- *  traverseDF( callback )
- *  traverseBF( callback )
+ *  深度优先遍历 traverseDF( callback ) 
+ *  广度优先遍历 traverseBF( callback )
+ *  前序遍历     traverseDLR( callback )
+ *  中序遍历     traverseLDR( callback )
+ *  后序遍历     traverseLRD( callback )
  *  contains( data, traversal )
  *  add ( child, parent )
  *  remove ( node, parent )
@@ -94,6 +98,7 @@ Tree.prototype.add =function (data, toData, side, traversal) {
       if (parent && !parent[side]) {
         parent[side] = child;
         child.parent = parent;
+        child.side   = side;
       } else if (!parent){
         throw new Error('Cannot add node to a non-existent parent.');
       } else {
@@ -128,11 +133,7 @@ Tree.prototype.remove = function (data, fromData, traversal) {
       throw new Error('Node to remove does not exist.');
     } else {
       childToRemove = target;
-      if (parent.left === target) {
-        parent.left = null;
-      } else {
-        parent.right = null;
-      }
+      parent[target.side] = null;
     }
   } else {
     throw new Error('Parent does not exist.');
@@ -186,11 +187,7 @@ function render () {
     node.html = document.createElement('div');
     if (node.parent) {
       node.parent.html.appendChild(node.html);
-      if (node.parent.left === node) {
-        node.html.classList.add('left');
-      } else {
-        node.html.classList.add('right');
-      }
+      node.html.classList.add(node.side);
     } else {
       node.html.classList.add('root');
     }
