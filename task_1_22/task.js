@@ -198,7 +198,7 @@ function render () {
 function draw () {
   var pre;
   function stop () {
-    pre.html.classList.remove('hi');
+    pre.html.classList.remove('highlight');
     pre = undefined;
     clearInterval(timer);
     timer = null;
@@ -208,10 +208,10 @@ function draw () {
       stop();
     } else {
       if (pre) {
-        pre.html.classList.remove('hi');
+        pre.html.classList.remove('highlight');
       }
       pre = states.shift();
-      pre.html.classList.add('hi');
+      pre.html.classList.add('highlight');
     }
   }, 500);
 }
