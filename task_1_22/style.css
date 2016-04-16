@@ -6,23 +6,15 @@
 }
 
 .container div {
-  width: 44%;
-  height: 70%;
+  width: 43%;
+  height: 80%;
 
   background-color: #fff;
   border: 1px solid #000;
-  
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
-.container .left {
-  left: 3%;
-}
-
-.container .right {
-  right: 3%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .container .hi {
