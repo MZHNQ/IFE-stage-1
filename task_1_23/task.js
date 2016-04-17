@@ -154,12 +154,12 @@ function draw (target) {
       pre = undefined;
       clearInterval(timer);
       timer = null;
-      resolve();
     }
 
     timer = setInterval( function () {
       if (!states.length) {
         stop();
+        resolve(target);
       } else {
         if (pre) {
           pre.html.classList.remove('highlight');
@@ -184,8 +184,8 @@ function deal (traversal) {
       states.push(node);
       if (target && RegExp(target).test(node.data)) search = true;
     });
-    draw(target).then(function () {
-      if (target && !search) alert('没有找到符合条件的节点。');
+    draw(target).then(function (value) {
+      if (target && !search) alert('没有找到与 '+ value +' 匹配的节点。');
     });
   }
 }
