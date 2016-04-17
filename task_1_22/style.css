@@ -1,8 +1,6 @@
 .container {
   width: 500px;
   height: 100px;
-
-  position: relative;
 }
 
 .container div {
