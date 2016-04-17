@@ -124,16 +124,14 @@ tree.add('six', 'two', tree.traverseBF);
 tree.add('seven', 'two', tree.traverseBF);
 tree.add('eight', 'four', tree.traverseBF);
 tree.add('nine', 'four', tree.traverseBF);
-
-tree.traverseBF(function (node) {
-  console.log(node.data);
-});
+tree.add('ten', 'eight', tree.traverseBF);
 
 var states = [];
 var timer = null;
 
 function render () {
   var container = document.querySelector('.container');
+  container.innerHTML = '';
 
   tree.traverseBF(function (node) {
     node.html = document.createElement('div');
@@ -148,36 +146,52 @@ function render () {
   container.appendChild(tree._root.html);
 }
 
-function draw () {
-  var pre;
-  function stop () {
-    pre.html.classList.remove('hi');
-    pre = undefined;
-    clearInterval(timer);
-    timer = null;
-  }
-  timer = setInterval( function () {
-    if (!states.length) {
-      stop();
-    } else {
-      if (pre) {
-        pre.html.classList.remove('hi');
-      }
-      pre = states.shift();
-      pre.html.classList.add('hi');
+function draw (target) {
+  return new Promise(function (resolve, reject) {
+    var pre;
+    function stop () {
+      pre.html.classList.remove('highlight');
+      pre = undefined;
+      clearInterval(timer);
+      timer = null;
+      resolve();
     }
-  }, 500);
+
+    timer = setInterval( function () {
+      if (!states.length) {
+        stop();
+      } else {
+        if (pre) {
+          pre.html.classList.remove('highlight');
+        }
+        pre = states.shift();
+        if (target && RegExp(target).test(pre.data)) {
+          pre.html.classList.add('selected');
+        }
+        pre.html.classList.add('highlight');
+      }
+    }, 500);
+  });
 }
 
 function deal (traversal) {
   return function () {
     if (timer) return alert('动画正在进行中');
+    render();
+    var target = getInput();
+    var search = false;
     traversal.call(tree, function (node) {
       states.push(node);
-      console.log(node.data);
+      if (target && RegExp(target).test(node.data)) search = true;
     });
-    draw();
+    draw(target).then(function () {
+      if (target && !search) alert('没有找到符合条件的节点。');
+    });
   }
+}
+
+function getInput () {
+  return document.querySelector('#search').value.trim();
 }
 
 function initEvent () {
