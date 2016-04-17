@@ -1,28 +1,31 @@
 .container {
-  width: 500px;
-  height: 100px;
-
-  position: relative;
+  display: flex;
 }
 
 .container div {
-  height: 60%;
-  padding: 8px;
+  height: 80%;
 
   background-color: #fff;
+  color: #000;
   border: 1px solid #000;
-  
-  float: left;
+
+  margin-right: 5px;
+  padding: 3px;
+
+  display: flex;
+  align-items: center;
 }
 
-.container .left {
-  left: 3%;
+.container .root {
+  height: 150px;
 }
 
-.container .right {
-  right: 3%;
+.container .selected {
+  background-color: #ccc;
+  color: #fff;
 }
 
-.container .hi {
+.container .highlight {
   background-color: red;
+  color: #fff;
 }
