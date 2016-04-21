@@ -45,6 +45,7 @@ function Queue ( option ) {
   this.data = [];
   this.container = $(option.selector);
   this.type = option.type;
+  this.init();
 };
 
 Queue.prototype.render = function ( match ) {
@@ -123,7 +124,4 @@ var hobby = new Queue({
 var tag = new Queue({
   selector: '#tag',
   type: 'input'
-})
-
-tag.init();
-hobby.init();
+});
