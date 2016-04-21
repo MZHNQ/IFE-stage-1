@@ -128,6 +128,7 @@ tree.add('ten', 'eight', tree.traverseBF);
 
 var states = [];
 var timer = null;
+var selected = null;
 
 function render () {
   var container = document.querySelector('.container');
@@ -178,7 +179,7 @@ function deal (traversal) {
   return function () {
     if (timer) return alert('动画正在进行中');
     render();
-    var target = getInput();
+    var target = getInput('#search');
     var search = false;
     traversal.call(tree, function (node) {
       states.push(node);
@@ -190,16 +191,48 @@ function deal (traversal) {
   }
 }
 
-function getInput () {
-  return document.querySelector('#search').value.trim();
+function getInput (selector) {
+  return document.querySelector(selector).value.trim();
+}
+
+function selectHandler (event) {
+  render();
+  event.stopPropagation();
+  tree.contains(function (node) {
+    if (node.data === event.target.innerHTML.match(/^[a-zA-Z ]*/)[0]) {
+      selected = node;
+      node.html.classList.add('selected');
+    }
+  }, tree.traverseBF);
+}
+
+function addHandler () {
+  if (!selected) return alert('请先选择父节点');
+  var value = getInput('#input');
+  if (!value) return alert('请输入节点的内容');
+  tree.add(value, selected.data, tree.traverseBF);
+  render();
+}
+
+function removeHandler () {
+  if (!selected) return alert('请先选择要删除的节点');
+  if (selected.parent === null) return alert('不能删除根节点');
+  tree.remove(selected.data, selected.parent.data, tree.traverseBF);
+  render();
 }
 
 function initEvent () {
   var dfsBtn = document.querySelector('#dfs');
   var bfsBtn = document.querySelector('#bfs');
+  var container = document.querySelector('.container');
+  var addBtn = document.querySelector('#add');
+  var removeBtn = document.querySelector('#remove');
 
   dfsBtn.addEventListener('click', deal(tree.traverseDF));
   bfsBtn.addEventListener('click', deal(tree.traverseBF));
+  container.addEventListener('click', selectHandler);
+  addBtn.addEventListener('click', addHandler);
+  removeBtn.addEventListener('click', removeHandler);
 }
 
 function init () {
