@@ -44,26 +44,20 @@ var aqiData = [
 
   var list = document.getElementById('aqi-list');
 
-  // 将数据渲染成页面上的 li 元素
-  function render ( el, index ) {
-    var li = document.createElement('li');
-    li.innerHTML = "第" + num2Chinese[index] + "名：" + el[0] + "，" + el[1];
-
-    list.appendChild(li);
+  // 渲染
+  function render () {
+    list.innerHTML = aqiData.map(function (el, index) {
+      return '<li>第' + num2Chinese[index] + '名：' + el[0] + '，' + el[1] +'</li>';
+    }).join('');
   }
 
-  // 将 aqiData 按空气质量值由大到小排序
-  aqiData = aqiData.sort(function (a, b) {
+  aqiData = aqiData.filter(function (el) {   // 筛选大于60的城市
+    return el[1] > 60;
+  }).sort(function (a, b) {                  // 排序
     return a[1] < b[1];
   });
 
-  // 遍历 aqiData，筛选空气质量大于 60 的城市
-  aqiData.forEach( function ( el, index ) {
-    if ( el[1] > 60 ) {
-      render( el, index );
-    }
-  } );
-
+  render();
 })();
 
 </script>
