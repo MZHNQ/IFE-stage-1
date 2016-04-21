@@ -127,7 +127,7 @@ function renderChart() {
    * 获取宽度
    * 按时间单位的不同分配宽度
    */
-  function _getWidth () {
+  function getWidth () {
     switch (pageState.nowGraTime) {
       case 'day':
         return 10;
@@ -142,7 +142,7 @@ function renderChart() {
    * 获取颜色
    * 按空气数值不同，分配颜色
    */
-  function _getColor ( data ) {
+  function getColor ( data ) {
     if ( data <= 50 ) {
       return '#6eb720';
     } else if ( data <= 100 ) {
@@ -164,9 +164,9 @@ function renderChart() {
       
       css(span, {
         display: 'inline-block',
-        width: _getWidth() + 'px',
+        width: getWidth() + 'px',
         height: chartData[i] + 'px',
-        background: _getColor(chartData[i]),
+        background: getColor(chartData[i]),
         marginRight: '1px'
       });
 
@@ -235,13 +235,13 @@ function initCitySelector() {
  */
 function setAqiChartData() {
   // 按城市名称获取数据
-  function _getCity() {
+  function getCity() {
     if ( pageState.nowSelectCity === -1 ) return '';
     return Object.keys(aqiSourceData)[pageState.nowSelectCity];
   }
 
   // 按时间单位整理数据
-  function _formatByTime( data ) {
+  function formatByTime( data ) {
     var result = {},
         keys = Object.keys(data),
         dayOfUnit,
@@ -293,8 +293,8 @@ function setAqiChartData() {
   }
 
 
-  var data = aqiSourceData[_getCity()];
-  data = data&&_formatByTime(data);
+  var data = aqiSourceData[getCity()];
+  data = data&&formatByTime(data);
 
   return data || {};
 }
