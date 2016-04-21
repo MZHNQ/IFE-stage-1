@@ -2,9 +2,6 @@ function $ ( selector ) {
   return document.querySelector( selector );
 }
 
-function trim ( string ) {
-  return string.match(/^\s*(.*\S)\s*$/)[1];
-}
 
 /**
  * aqiData，存储用户输入的空气指数数据
@@ -21,8 +18,8 @@ var aqiData = {};
  * 然后渲染aqi-list列表，增加新增的数据
  */
 function addAqiData() {
-  var city = $('#aqi-city-input').value,
-      num  = $('#aqi-value-input').value;
+  var city = $('#aqi-city-input').value.trim(),
+      num  = $('#aqi-value-input').value.trim();
 
   if ( !/^[A-Za-z\u4e00-\u9fa5]+$/.exec(city) ) {
     alert("城市名称只能使用中英文字符！");
@@ -33,7 +30,7 @@ function addAqiData() {
     return;
   }
 
-  aqiData[city.trim()] = parseInt(num);
+  aqiData[city] = parseInt(num);
 }
 
 /**
@@ -42,7 +39,7 @@ function addAqiData() {
 function renderAqiList() {
   var i;
   var table = $('#aqi-table');
-  table.innerHTML = '';
+  // table.innerHTML = '';
   
   if (isEmptyObj(aqiData)) return;
 
